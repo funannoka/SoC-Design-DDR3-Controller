@@ -1,0 +1,13 @@
+# /etc/csh.login
+
+setenv SFLM_SERVER innersanctum
+setenv CDS_LIC_FILE 5280@innersanctum:/apps/cadence/license-current
+setenv CDSLMD_LICENSE_FILE 5280@innersanctum:/apps/cadence/license-current
+setenv LM_LICENSE_FILE 27000@innersanctum.engr.sjsu.edu:/apps/synopsys/license/current-license-key:27001@innersanctum.engr.sjsu.edu
+setenv SNPSLMS_LICENSE_FILE 27000@innersanctum.engr.sjsu.edu:/apps/synopsys/license/current-license-key
+setenv VCS_HOME /apps/synopsys/VCSMX_NEW
+source ${VCS_HOME}/bin/environ.csh
+which vcs
+vcs +systemverilogext+.sv -sverilog $argv
+if ($status != 0) exit $status
+./simv -l sim_result.txt

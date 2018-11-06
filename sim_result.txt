@@ -1,0 +1,877 @@
+Command: ./simv -l sim_result.txt
+Chronologic VCS simulator copyright 1991-2014
+Contains Synopsys proprietary information.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  Dec  8 14:03 2017
+top.mem.file_io_open: at time                    0 WARNING: no +model_data option specified, using /tmp.
+top.mem.open_bank_file: at time 0 INFO: opening /tmp/top.mem.open_bank_file.0.
+top.mem.open_bank_file: at time 0 INFO: opening /tmp/top.mem.open_bank_file.1.
+top.mem.open_bank_file: at time 0 INFO: opening /tmp/top.mem.open_bank_file.2.
+top.mem.open_bank_file: at time 0 INFO: opening /tmp/top.mem.open_bank_file.3.
+top.mem.open_bank_file: at time 0 INFO: opening /tmp/top.mem.open_bank_file.4.
+top.mem.open_bank_file: at time 0 INFO: opening /tmp/top.mem.open_bank_file.5.
+top.mem.open_bank_file: at time 0 INFO: opening /tmp/top.mem.open_bank_file.6.
+top.mem.open_bank_file: at time 0 INFO: opening /tmp/top.mem.open_bank_file.7.
+                   0	Starting the simulation
+                   0	tb: Power Up Command Asserted
+                1807	cntrl: NOW IN POWER UP STATE
+                1807	cntrl: POWER UP SUCCESSFUL!
+top.mem.reset at time 14939.0 ps WARNING: 200 us is required before RST_N goes inactive.
+top.mem.cmd_task at time 28540.0 ps WARNING: 500 us is required after RST_N goes inactive before CKE goes active.
+              199725	cntrl: nop
+top.mem.cmd_task: at time 201132.0 ps INFO: ZQ        long = 1
+top.mem.cmd_task: at time 202070.0 ps INFO: Load Mode 2
+top.mem.cmd_task: at time 202070.0 ps INFO: Load Mode 2 Partial Array Self Refresh = Bank 0-7
+top.mem.cmd_task: at time 202070.0 ps INFO: Load Mode 2 CAS Write Latency =          10
+top.mem.cmd_task: at time 202070.0 ps INFO: Load Mode 2 Auto Self Refresh = Disabled
+top.mem.cmd_task: at time 202070.0 ps INFO: Load Mode 2 Self Refresh Temperature = Normal
+top.mem.cmd_task: at time 202070.0 ps INFO: Load Mode 2 Dynamic ODT Rtt =          60 Ohm
+              207229	cntrl: nop
+top.mem.cmd_task: at time 208636.0 ps INFO: Load Mode 3
+top.mem.cmd_task: at time 208636.0 ps INFO: Load Mode 3 MultiPurpose Register Select = Pre-defined pattern
+top.mem.cmd_task: at time 208636.0 ps INFO: Load Mode 3 MultiPurpose Register Enable = Disabled
+              212857	cntrl: nop
+top.mem.cmd_task: at time 214264.0 ps INFO: Load Mode 1
+top.mem.cmd_task: at time 214264.0 ps INFO: Load Mode 1 DLL Enable = Enabled
+top.mem.cmd_task: at time 214264.0 ps INFO: Load Mode 1 Output Drive Strength =          34 Ohm
+top.mem.cmd_task: at time 214264.0 ps INFO: Load Mode 1 ODT Rtt =          60 Ohm
+top.mem.cmd_task: at time 214264.0 ps INFO: Load Mode 1 Additive Latency = CL - 2
+top.mem.cmd_task: at time 214264.0 ps INFO: Load Mode 1 Write Levelization = Disabled
+top.mem.cmd_task: at time 214264.0 ps INFO: Load Mode 1 TDQS Enable = Disabled
+top.mem.cmd_task: at time 214264.0 ps INFO: Load Mode 1 Qoff = Enabled
+              218485	cntrl: nop
+top.mem.cmd_task: at time 219892.0 ps INFO: Load Mode 0
+top.mem.cmd_task: at time 219892.0 ps INFO: Load Mode 0 Burst Length = Fixed  4 (chop)
+top.mem.cmd_task: at time 219892.0 ps INFO: Load Mode 0 Burst Order = Interleaved
+top.mem.cmd_task: at time 219892.0 ps INFO: Load Mode 0 CAS Latency =          14
+top.mem.cmd_task: at time 219892.0 ps INFO: Load Mode 0 DLL Reset = Reset DLL
+top.mem.cmd_task: at time 219892.0 ps INFO: Load Mode 0 Write Recovery =          16
+top.mem.cmd_task: at time 219892.0 ps INFO: Load Mode 0 Power Down Mode = DLL off
+top.mem.cmd_task: at time 219892.0 ps INFO: Initialization Sequence is complete
+             1633927	cntrl: nop
+top.mem.cmd_task: at time 1646590.0 ps INFO: Activate  bank 3 row 0116
+top.mem.main: at time 1654094.0 ps INFO: Sync On Die Termination Rtt_NOM =         60 Ohm
+             1681765	cntrl: nop
+top.mem.cmd_task: at time 1683172.0 ps INFO: Precharge bank   3
+             1697711	cntrl: nop
+top.mem.cmd_task: at time 1700056.0 ps INFO: Refresh  
+             1861861	cntrl: nop
+top.mem.cmd_task: at time 1864206.0 ps INFO: Activate  bank 4 row 027e
+             1878745	cntrl: nop
+top.mem.cmd_task: at time 1880152.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.chk_err: at time 1881090.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1881090.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1881090.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.chk_err: at time 1882028.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1882028.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1882028.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.chk_err: at time 1882966.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1882966.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1882966.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.chk_err: at time 1883904.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1883904.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1883904.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.chk_err: at time 1884842.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1884842.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1884842.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.chk_err: at time 1885780.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1885780.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1885780.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.chk_err: at time 1886718.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1886718.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1886718.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.chk_err: at time 1887656.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1887656.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1887656.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.chk_err: at time 1888594.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1888594.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1888594.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.chk_err: at time 1889532.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1889532.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1889532.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.chk_err: at time 1890470.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1890470.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1890470.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.chk_err: at time 1891408.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1891408.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1891408.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.chk_err: at time 1892346.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1892346.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1892346.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.chk_err: at time 1893284.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1893284.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1893284.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.chk_err: at time 1894222.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1894222.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1894222.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.chk_err: at time 1895160.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1895160.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1895160.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.chk_err: at time 1896098.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1896098.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1896098.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.chk_err: at time 1897036.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1897036.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1897036.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.chk_err: at time 1897974.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1897974.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1897974.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.chk_err: at time 1898912.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1898912.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1898912.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.main: at time 1898912.0 ps INFO: Sync On Die Termination Rtt_WR =         60 Ohm
+top.mem.chk_err: at time 1899850.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1899850.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1899850.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1900788.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1900788.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.chk_err: at time 1900788.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1900788.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1900788.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1901257.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1901257.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1901257.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1901726.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1901726.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1901726.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1901726.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1901726.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1901726.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1902195.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1902195.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1902195.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.dqs_pos_timing_check: at time 1902195.0 ps ERROR: Invalid latching edge on DQS   bit          0
+top.mem.dqs_pos_timing_check: at time 1902195.0 ps ERROR: Invalid latching edge on DQS_N bit          0
+top.mem.data_task: at time 1902664.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1902664.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1902664.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1902664.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1902664.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1902664.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1903133.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1903133.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1903133.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1903602.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1903602.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1903602.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1903602.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1903602.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1903602.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1904071.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1904071.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1904071.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1904540.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1904540.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1904540.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1904540.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1905009.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1905009.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1905009.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1905478.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1905478.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1905478.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1905478.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1905478.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1905478.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1905947.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1905947.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1905947.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1906416.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1906416.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1906416.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1906416.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1906416.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1906416.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1906885.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1906885.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1906885.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1907354.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1907354.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1907354.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1907354.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1907354.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1907354.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1907823.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1907823.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1907823.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1908292.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1908292.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1908292.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1908292.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1908292.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1908292.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1908761.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1908761.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1908761.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1909230.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1909230.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1909230.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1909230.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1909230.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1909230.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1909699.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1909699.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1909699.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1910168.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1910168.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1910168.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1910168.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1910168.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1910168.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1910637.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1910637.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1910637.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1911106.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1911106.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1911106.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1911106.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1911106.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1911106.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1911575.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1911575.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1911575.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1912044.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1912044.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1912044.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1912044.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1912044.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1912044.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1912513.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1912513.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1912513.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1912982.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1912982.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1912982.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1912982.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1912982.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1912982.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1913451.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1913451.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1913451.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1913920.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1913920.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1913920.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1913920.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1913920.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1913920.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1914389.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1914389.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1914389.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1914858.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1914858.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1914858.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1914858.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1914858.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1914858.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1915327.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1915327.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1915327.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1915796.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1915796.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1915796.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1915796.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1915796.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1915796.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1916265.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1916734.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1916734.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1916734.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1916734.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1916734.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1916734.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1917203.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1917203.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1917203.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1917672.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1917672.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1917672.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1917672.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1917672.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1917672.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1918141.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1918141.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1918141.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1918610.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1918610.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1918610.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1918610.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1918610.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1918610.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1919079.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1919079.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1919079.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1919548.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1919548.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1919548.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1919548.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1919548.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1919548.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1920017.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1920017.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1920017.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1920486.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1920486.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1920486.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1920486.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1920486.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1920486.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1920955.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1920955.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1920955.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1921424.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1921424.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1921424.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1921424.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1921424.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1921424.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1921893.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1921893.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1921893.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1922362.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1922362.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1922362.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1922362.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1922362.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1922362.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1922831.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1922831.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1922831.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1923300.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1923300.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1923300.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1923300.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1923300.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1923300.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1923769.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1923769.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1923769.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1924238.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1924238.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1924238.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1924238.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1924238.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1924238.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1924707.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1924707.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1924707.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1925176.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1925176.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1925176.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1925176.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1925176.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1925176.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1925645.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1925645.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1925645.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1926114.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1926114.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1926114.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1926114.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1926114.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1926114.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1926583.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1926583.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1926583.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1927052.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1927052.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1927052.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1927052.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1927521.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1927521.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1927521.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1927990.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1927990.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1927990.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1927990.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1927990.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1927990.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1928459.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1928459.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1928459.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1928928.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1928928.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1928928.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1928928.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1928928.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1928928.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1929397.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1929397.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1929397.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1929866.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1929866.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1929866.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1929866.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1929866.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1929866.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1930335.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1930335.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1930335.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1930804.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1930804.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1930804.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1930804.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1930804.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1930804.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1931273.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1931273.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1931273.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1931742.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1931742.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1931742.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1931742.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1931742.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1931742.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1932211.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1932211.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1932211.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1932680.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1932680.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1932680.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1932680.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1932680.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1932680.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1933149.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1933149.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1933149.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1933618.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1933618.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1933618.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1933618.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1933618.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1933618.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1934087.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1934087.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1934087.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1934556.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1934556.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1934556.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1934556.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1934556.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1934556.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1935025.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1935025.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1935025.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1935494.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1935494.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1935494.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1935494.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1935494.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1935494.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1935963.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1935963.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1935963.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1936432.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1936432.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1936432.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1936432.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1936432.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1936432.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1936901.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1936901.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1936901.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1937370.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1937370.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1937370.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1937370.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1937370.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1937370.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1937839.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1937839.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1937839.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1938308.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1938308.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1938308.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1938308.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1938308.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1938308.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1938777.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1939246.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1939246.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1939246.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1939246.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1939246.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1939246.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1939715.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1939715.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1939715.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1940184.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1940184.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1940184.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1940184.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1940184.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1940184.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1940653.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1940653.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1940653.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1941122.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1941122.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1941122.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1941122.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1941122.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1941122.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1941591.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1941591.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1941591.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1942060.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1942060.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1942060.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1942060.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1942060.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1942060.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1942529.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1942529.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1942529.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1942998.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1942998.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1942998.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1942998.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1942998.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1942998.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1943467.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1943467.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1943467.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1943936.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1943936.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1943936.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1943936.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1943936.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1943936.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1944405.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1944405.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1944405.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1944874.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1944874.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1944874.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1944874.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1944874.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1944874.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1945343.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1945343.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1945343.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1945812.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1945812.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1945812.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1945812.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1945812.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1945812.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1946281.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1946281.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1946281.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1946750.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1946750.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1946750.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1946750.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1946750.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1946750.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1947219.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1947219.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1947219.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1947688.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1947688.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1947688.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1947688.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1947688.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1947688.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1948157.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1948157.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1948157.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1948626.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1948626.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1948626.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1948626.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1948626.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1948626.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1949095.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1949095.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1949095.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1949564.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1949564.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1949564.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1949564.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1950033.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1950033.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1950033.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1950502.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1950502.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1950502.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1950502.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1950502.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1950502.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1950971.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1950971.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1950971.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1951440.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1951440.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1951440.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1951440.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1951440.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1951440.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1951909.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1951909.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1951909.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1952378.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1952378.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1952378.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1952378.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1952378.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1952378.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1952847.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1952847.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1952847.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1953316.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1953316.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1953316.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1953316.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1953316.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1953316.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1953785.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1953785.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1953785.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1954254.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1954254.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1954254.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1954254.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1954254.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1954254.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1954723.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1954723.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1954723.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1955192.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1955192.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1955192.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1955192.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1955192.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1955192.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+top.mem.data_task: at time 1955661.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1955661.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1955661.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1956130.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1956130.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1956130.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1956130.0 ps ERROR:  tCCD violation during Write     to bank 4
+top.mem.chk_err: at time 1956130.0 ps ERROR:  tCCD_DG violation during Write     to bank 4
+top.mem.cmd_task: at time 1956130.0 ps INFO: Write     bank 4 col 14c, auto precharge 0
+             1956599	cntrl: nop
+top.mem.data_task: at time 1956599.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1956599.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1956599.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1957068.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1957068.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1957068.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.data_task: at time 1957537.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1957537.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1957537.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1958006.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1958006.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1958006.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.data_task: at time 1958475.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1958475.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1958475.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1958944.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1958944.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1958944.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1958944.0 ps ERROR:  tWTR violation during Read      to bank 4
+top.mem.chk_err: at time 1958944.0 ps ERROR:  tWTR_DG violation during Read      to bank 4
+top.mem.cmd_task: at time 1958944.0 ps INFO: Read      bank 4 col 14d, auto precharge 0
+top.mem.data_task: at time 1959413.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1959413.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1959413.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1959882.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1959882.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1959882.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1959882.0 ps ERROR:  tWTR violation during Read      to bank 4
+top.mem.chk_err: at time 1959882.0 ps ERROR:  tWTR_DG violation during Read      to bank 4
+top.mem.chk_err: at time 1959882.0 ps ERROR:  tCCD violation during Read      to bank 4
+top.mem.chk_err: at time 1959882.0 ps ERROR:  tCCD_DG violation during Read      to bank 4
+top.mem.cmd_task: at time 1959882.0 ps INFO: Read      bank 4 col 14d, auto precharge 0
+top.mem.data_task: at time 1960351.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1960351.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1960351.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1960820.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1960820.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1960820.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1960820.0 ps ERROR:  tWTR violation during Read      to bank 4
+top.mem.chk_err: at time 1960820.0 ps ERROR:  tWTR_DG violation during Read      to bank 4
+top.mem.chk_err: at time 1960820.0 ps ERROR:  tCCD violation during Read      to bank 4
+top.mem.chk_err: at time 1960820.0 ps ERROR:  tCCD_DG violation during Read      to bank 4
+top.mem.cmd_task: at time 1960820.0 ps INFO: Read      bank 4 col 14d, auto precharge 0
+top.mem.data_task: at time 1961289.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1961289.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1961289.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1961758.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1961758.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1961758.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1961758.0 ps ERROR:  tWTR violation during Read      to bank 4
+top.mem.chk_err: at time 1961758.0 ps ERROR:  tWTR_DG violation during Read      to bank 4
+top.mem.chk_err: at time 1961758.0 ps ERROR:  tCCD violation during Read      to bank 4
+top.mem.chk_err: at time 1961758.0 ps ERROR:  tCCD_DG violation during Read      to bank 4
+top.mem.cmd_task: at time 1961758.0 ps INFO: Read      bank 4 col 14d, auto precharge 0
+top.mem.data_task: at time 1962227.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1962227.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1962227.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1962696.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1962696.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1962696.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1962696.0 ps ERROR:  tWTR violation during Read      to bank 4
+top.mem.chk_err: at time 1962696.0 ps ERROR:  tWTR_DG violation during Read      to bank 4
+top.mem.chk_err: at time 1962696.0 ps ERROR:  tCCD violation during Read      to bank 4
+top.mem.chk_err: at time 1962696.0 ps ERROR:  tCCD_DG violation during Read      to bank 4
+top.mem.cmd_task: at time 1962696.0 ps INFO: Read      bank 4 col 14d, auto precharge 0
+top.mem.data_task: at time 1963165.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1963165.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1963165.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1963634.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1963634.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1963634.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1963634.0 ps ERROR:  tWTR violation during Read      to bank 4
+top.mem.chk_err: at time 1963634.0 ps ERROR:  tWTR_DG violation during Read      to bank 4
+top.mem.chk_err: at time 1963634.0 ps ERROR:  tCCD violation during Read      to bank 4
+top.mem.chk_err: at time 1963634.0 ps ERROR:  tCCD_DG violation during Read      to bank 4
+top.mem.cmd_task: at time 1963634.0 ps INFO: Read      bank 4 col 14d, auto precharge 0
+top.mem.data_task: at time 1964103.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1964103.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1964103.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1964572.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1964572.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1964572.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1964572.0 ps ERROR:  tWTR violation during Read      to bank 4
+top.mem.chk_err: at time 1964572.0 ps ERROR:  tWTR_DG violation during Read      to bank 4
+top.mem.chk_err: at time 1964572.0 ps ERROR:  tCCD violation during Read      to bank 4
+top.mem.chk_err: at time 1964572.0 ps ERROR:  tCCD_DG violation during Read      to bank 4
+top.mem.cmd_task: at time 1964572.0 ps INFO: Read      bank 4 col 14d, auto precharge 0
+             1965041	cntrl: nop
+top.mem.data_task: at time 1965041.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1965041.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1965041.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1965510.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1965510.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1965510.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.main: at time 1965510.0 ps ERROR:  ODTH4 violation during ODT transition
+top.mem.data_task: at time 1965979.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1965979.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1965979.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1966448.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1966448.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1966448.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.data_task: at time 1966917.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1966917.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1966917.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1967386.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1967386.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1967386.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.chk_err: at time 1967386.0 ps ERROR:   tWR violation during Precharge to bank 4
+top.mem.chk_err: at time 1967386.0 ps ERROR:  tRTP violation during Precharge to bank 4
+top.mem.cmd_task: at time 1967386.0 ps INFO: Precharge bank   4
+top.mem.main: at time 1967386.0 ps ERROR:  ODTH4 violation during ODT transition
+top.mem.data_task: at time 1967855.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1967855.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1967855.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1968324.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1968324.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1968324.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.data_task: at time 1968793.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1968793.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1968793.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1969262.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1969262.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1969262.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.main: at time 1969262.0 ps ERROR:  ODTH4 violation during ODT transition
+top.mem.data_task: at time 1969731.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1969731.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1969731.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1970200.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1970200.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1970200.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.data_task: at time 1970669.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1970669.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1970669.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1971138.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1971138.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1971138.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.main: at time 1971138.0 ps ERROR:  ODTH4 violation during ODT transition
+top.mem.data_task: at time 1971607.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1971607.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1971607.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1972076.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1972076.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1972076.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.data_task: at time 1972545.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1972545.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1972545.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1973014.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1973014.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1973014.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.data_task: at time 1973483.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1973483.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1973483.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1973952.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1973952.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1973952.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.data_task: at time 1974421.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1974421.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1974421.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1974890.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1974890.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1974890.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.data_task: at time 1975359.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1975359.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1975359.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1975828.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1975828.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1975828.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.data_task: at time 1976297.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1976297.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1976297.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1976766.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1976766.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1976766.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.data_task: at time 1977235.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1977235.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1977235.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.data_task: at time 1977704.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1977704.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1977704.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.data_task: at time 1978173.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1978173.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period
+top.mem.data_task: at time 1978173.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014e data = xx
+top.mem.data_task: at time 1978642.0 ps ERROR: DQS   bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1978642.0 ps ERROR: DQS_N bit           0 latching edge required during the preceding clock period.
+top.mem.data_task: at time 1978642.0 ps INFO: WRITE @ DQS= bank = 4 row = 027e col = 0000014f data = xx
+top.mem.main: at time 1978642.0 ps INFO: Sync On Die Termination Rtt_WR =          0 Ohm
+             1981925	cntrl: nop
+top.mem.main: at time 1981925.0 ps ERROR: On Die Termination must be OFF during Read data transfer.
+top.mem.main: at time 1982394.0 ps INFO: Sync On Die Termination Rtt_NOM =          0 Ohm
+top.mem.data_task: at time 1982863.0 ps INFO: READ @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.data_task: at time 1983332.0 ps INFO: READ @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.main: at time 1983332.0 ps INFO: Sync On Die Termination Rtt_NOM =         60 Ohm
+top.mem.main: at time 1983332.0 ps ERROR: On Die Termination must be OFF during Read data transfer.
+top.mem.data_task: at time 1983801.0 ps INFO: READ @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.main: at time 1983801.0 ps ERROR: On Die Termination must be OFF during Read data transfer.
+top.mem.data_task: at time 1984270.0 ps INFO: READ @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.main: at time 1984270.0 ps INFO: Sync On Die Termination Rtt_NOM =          0 Ohm
+top.mem.data_task: at time 1984739.0 ps INFO: READ @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.data_task: at time 1985208.0 ps INFO: READ @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.main: at time 1985208.0 ps INFO: Sync On Die Termination Rtt_NOM =         60 Ohm
+top.mem.main: at time 1985208.0 ps ERROR: On Die Termination must be OFF during Read data transfer.
+top.mem.data_task: at time 1985677.0 ps INFO: READ @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.main: at time 1985677.0 ps ERROR: On Die Termination must be OFF during Read data transfer.
+top.mem.data_task: at time 1986146.0 ps INFO: READ @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.main: at time 1986146.0 ps INFO: Sync On Die Termination Rtt_NOM =          0 Ohm
+top.mem.data_task: at time 1986615.0 ps INFO: READ @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.data_task: at time 1987084.0 ps INFO: READ @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.main: at time 1987084.0 ps INFO: Sync On Die Termination Rtt_NOM =         60 Ohm
+top.mem.main: at time 1987084.0 ps ERROR: On Die Termination must be OFF during Read data transfer.
+top.mem.data_task: at time 1987553.0 ps INFO: READ @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.main: at time 1987553.0 ps ERROR: On Die Termination must be OFF during Read data transfer.
+top.mem.data_task: at time 1988022.0 ps INFO: READ @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.main: at time 1988022.0 ps INFO: Sync On Die Termination Rtt_NOM =          0 Ohm
+             1988491	cntrl: nop
+top.mem.data_task: at time 1988491.0 ps INFO: READ @ DQS= bank = 4 row = 027e col = 0000014d data = xx
+top.mem.data_task: at time 1988960.0 ps INFO: READ @ DQS= bank = 4 row = 027e col = 0000014c data = xx
+top.mem.main: at time 1988960.0 ps INFO: Sync On Die Termination Rtt_NOM =         60 Ohm
+top.mem.main: at time 1988960.0 ps ERROR: On Die Termination must be OFF during Read data transfer.
+$finish called from file "top.sv", line 153.
+$finish at simulation time 1989429.0 ps
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 1989429 ps
+CPU Time:      0.860 seconds;       Data structure size:   0.1Mb
+Fri Dec  8 14:03:41 2017

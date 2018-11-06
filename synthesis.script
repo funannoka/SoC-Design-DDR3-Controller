@@ -1,0 +1,25 @@
+set link_library {/apps/toshiba/sjsu/synopsys/tc240c/tc240c.db_NOMIN25 /apps/synopsys/I-2013.12-SP5/libraries/syn/dw_foundation.sldb}
+set target_library {/apps/toshiba/sjsu/synopsys/tc240c/tc240c.db_NOMIN25}
+read_sverilog intf.svh
+read_sverilog ddr3_controller.sv
+current_design ddr3_controller
+###############################
+# change the x to your interface name
+###############################
+create_clock ix.ck -name ck -period 10
+set_propagated_clock ck
+set_clock_uncertainty 0.25 ck
+set_propagated_clock ck
+set_output_delay 0.5 -clock ck [all_outputs]
+set all_inputs_wo_rst_clk [remove_from_collection [remove_from_collection [all_inputs] [get_port ix.ck]] [get_port ix.rst_n]]
+set_driving_cell -lib_cell CND2X1 $all_inputs_wo_rst_clk
+set_input_delay 0.6 -clock ck $all_inputs_wo_rst_clk
+set_output_delay 0.6 -clock ck [all_outputs]
+set_fix_hold [ get_clocks ck ]
+set_output_delay 0.3 -clock ck [all_outputs]
+compile_ultra
+
+update_timing
+report_timing -max_paths 5
+write -hierarchy -format verilog -output ddr3_controller_gates.v
+quit

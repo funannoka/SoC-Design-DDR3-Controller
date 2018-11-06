@@ -1,0 +1,1673 @@
+#@ # 
+#@ # Running dc_shell Version K-2015.06-SP5-1 for linux64 -- Feb 26, 2016
+#@ # Date:   Wed Dec  6 21:48:25 2017
+#@ # Run by: 01075415@coe-ee-cad15.sjsuad.sjsu.edu
+#@ 
+
+source /apps/synopsys/SYNTH/admin/setup/.synopsys_dc.setup
+#@ # -- Starting source /apps/synopsys/SYNTH/admin/setup/.synopsys_dc.setup
+
+#@ #
+#@ #		".synopsys_dc.setup" Initialization File for
+#@ #
+#@ #		    Dc_Shell and Design_Analyzer
+#@ #
+#@ #	The variables in this file define the behavior of many parts
+#@ #	of the Synopsys Synthesis Tools.  Upon installation, they should 
+#@ #	be reviewed and modified to fit your site's needs.  Each engineer
+#@ #	can have a .synopsys file in his/her home directory or current
+#@ #	directory to override variable settings in this file.  
+#@ #
+#@ #  	Each logical grouping of variables is commented as to their 
+#@ #	nature and effect on the Synthesis Commands.  Examples of
+#@ #	variable groups are the Compile Variable Group, which affects 
+#@ #	the designs produced by the COMPILE command, and the Schematic 
+#@ #	Variable Group, which affects the output of the create_schematic
+#@ #	command.
+#@ #
+#@ #	You can type "man <group_name>_variables" in dc_shell or 
+#@ #	design_analyzer to get help about a group of variables.
+#@ #	For instance, to get help about the "system" variable group, 
+#@ #	type "help system_variables".  You can also type
+#@ #	"man <variable name>", to get help on the that variable's 
+#@ #	group.
+#@ #
+#@ 
+#@ # System variables
+#@ set sh_command_abbrev_mode       "Anywhere"
+#@ set sh_continue_on_error         "true"
+#@ update_app_var -default true sh_continue_on_error
+#@ set sh_enable_page_mode          "true"
+#@ update_app_var -default true sh_enable_page_mode
+#@ set sh_source_uses_search_path   "true"
+#@ update_app_var -default true sh_source_uses_search_path
+#@ if {$synopsys_program_name == "dc_shell" ||     $synopsys_program_name == "de_shell" ||     $synopsys_program_name == "dc_sms_shell" } {
+#@ set sh_new_variable_message	 "false"
+#@ update_app_var -default false sh_new_variable_message
+#@ } else {
+#@ set sh_new_variable_message	 "true"
+#@ update_app_var -default true sh_new_variable_message
+#@ }
+#@ 
+#@ if {$synopsys_program_name == "dc_shell"} {
+#@ set html_log_enable	     "false"
+#@ set html_log_filename	 "default.html"
+#@ }
+#@ 
+#@ if {$synopsys_program_name == "de_shell"} {
+#@ set de_log_html_filename	 "default.html"
+#@ }
+#@ 
+#@ if { [string compare $dc_shell_mode "tcl"] == 0 } {
+#@  set sh_enable_line_editing       "true"
+#@  set sh_line_editing_mode         "emacs"
+#@ }
+#@ 
+#@ if {$synopsys_program_name == "icc_shell"} {
+#@  if {"$sh_output_log_file" == ""} {
+#@   set sh_output_log_file "icc_output.txt"
+#@  }
+#@ 
+#@ ## the variable sh_redirect_progress_messages only makes it possible 
+#@ ## for some commands to redirect progress messages to the log file,thereby
+#@ ## bypassing the console and reducing the volume of messages on the console.
+#@  set sh_redirect_progress_messages true
+#@  }
+#@ 
+#@ 
+#@ # Suppress new variable messages for the following variables
+#@ array set auto_index {}
+#@ set auto_oldpath ""
+#@ 
+#@ # Enable customer support banner on fatal
+#@ if { $sh_arch == "linux"    || $sh_arch == "amd64"    || $sh_arch == "linux64" ||     $sh_arch == "suse32"   || $sh_arch == "suse64"   ||      $sh_arch == "sparcOS5" || $sh_arch == "sparc64"  ||      $sh_arch == "x86sol32" || $sh_arch == "x86sol64" ||      $sh_arch == "rs6000"   || $sh_arch == "aix64" } {
+#@    setenv SYNOPSYS_TRACE ""
+#@ }
+#@ 
+#@ #
+#@ # Load the procedures which make up part of the user interface.
+#@ #
+#@ if { [string compare $dc_shell_mode "tcl"] == 0 } {
+#@   source $synopsys_root/auxx/syn/.dc_common_procs.tcl
+#@   if {$synopsys_program_name != "dc_sms_shell"} {
+#@     source $synopsys_root/auxx/syn/.dc_procs.tcl
+#@   }
+#@   alias list_commands help
+#@ }
+#@ # -- Starting source /apps/synopsys/SYNTH/auxx/syn/.dc_common_procs.tcl
+
+#@ ##############################################################################
+#@ #
+#@ #
+#@ # FILE:         auxx/syn/.dc_common_procs.tcl
+#@ #
+#@ # ABSTRACT:     These procedures are part of the PrimeTime and DC
+#@ #               user interface.
+#@ #               They are loaded by .synopsys_pt.setup and .synopsys_dc.setup.
+#@ #
+#@ ##############################################################################
+#@ #
+#@ #
+#@ 
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #
+#@ #  PROCEDURE:   group_variable
+#@ #
+#@ #  ABSTRACT:    Add a variable to the specified variable group.
+#@ #               This command is typically used by the system
+#@ #               administrator only.
+#@ #
+#@ #               Below the proc is the command which creates the command
+#@ #               help information and semantic data for the argument.
+#@ #
+#@ #  RETURNS:     1 if it is successful.
+#@ #               error code if the variable does not exist.
+#@ #               error code of the variable is already in the group.
+#@ #
+#@ #  SYNTAX:      group_variable group_name variable_name
+#@ #
+#@ ##############################################################################
+#@ #
+#@ 
+#@ 
+#@ proc group_variable { args } {
+#@   global _Variable_Groups
+#@ 
+#@   parse_proc_arguments -args $args resarr
+#@   set group $resarr(group)
+#@   set var $resarr(variable_name)
+#@ 
+#@   if { ![info exists _Variable_Groups($group)] } {
+#@    set _Variable_Groups($group) ""
+#@   }
+#@ 
+#@   # Verify that var exists as a global variable
+#@ 
+#@   set cmd "uplevel #0 \{info exists $var\}"
+#@   if { ![eval $cmd] } {
+#@     return -code error "Variable '$var' is not defined."
+#@   }
+#@ 
+#@   # Only add it if it's not already there
+#@ 
+#@   if { [lsearch $_Variable_Groups($group) $var] == -1 } {
+#@     lappend _Variable_Groups($group) $var
+#@   }
+#@ 
+#@   return 1
+#@ }
+#@ 
+#@ define_proc_attributes group_variable     -info "Add a variable to a variable group"      -command_group "Builtins" -permanent -dont_abbrev     -define_args { 
+#@       {group "Variable group name" group}
+#@       {variable_name "Variable name" variable_name}}
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #
+#@ #  PROCEDURE:   print_variable_group
+#@ #
+#@ #  ABSTRACT:    Shows variables and their values defined in the given group.
+#@ 
+#@ #
+#@ #               Below the proc is the command which creates the command
+#@ #               help information and semantic data for the argument.
+#@ #
+#@ #  RETURNS:     1 if it is successful.
+#@ #               error code of the variable group does not exist.
+#@ #
+#@ #  SYNTAX:      print_variable_group group_name
+#@ #
+#@ ##############################################################################
+#@ #
+#@ 
+#@ proc print_variable_group { args } {
+#@   global _Variable_Groups
+#@ 
+#@   parse_proc_arguments -args $args resarr
+#@   set group $resarr(group)
+#@ 
+#@   if { [string compare $group "all"] == 0 } {
+#@     set cmd "uplevel #0 \{printvar\}"
+#@     return [eval $cmd]
+#@   }
+#@ 
+#@   if { ![info exists _Variable_Groups($group)] } {
+#@     return -code error "Variable group '$group' does not exist."
+#@   }
+#@ 
+#@   # Print out each global variable in the list. To be totally bulletproof, 
+#@   # test that each variable in the group is still defined.  If not, remove 
+#@   # it from the list.
+#@  
+#@   foreach var [lsort $_Variable_Groups($group)] {
+#@     set cmd "uplevel #0 \{info exists $var\}"
+#@     if { ![eval $cmd] } {
+#@       # Remove it
+#@       set n [lsearch $_Variable_Groups($group) $var]
+#@       set $_Variable_Groups($group) [lreplace $_Variable_Groups($group) $n $n]
+#@     } else {
+#@       # Print it.
+#@       set cmd "uplevel #0 \{set $var\}"
+#@       set val [eval $cmd]
+#@       echo [format "%-25s = \"%s\"" $var $val]
+#@     }
+#@   }
+#@ 
+#@   return 1
+#@ }
+#@ 
+#@ define_proc_attributes print_variable_group     -info "Print the contents of a variable group"      -command_group "Builtins" -permanent      -define_args {{group "Variable group name" group}}
+#@ 
+#@ 
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #
+#@ #  PROCEDURE:   _Variable_Groups_Get_Groups
+#@ #
+#@ #  ABSTRACT:    Return a list of all variable groups. This command is hidden
+#@ #               and is used by Design Vision.
+#@ #
+#@ #   RETURNS:    Tcl list of all variable groups including group all
+#@ #
+#@ #  SYNTAX:      _Variable_Groups_Get_Groups
+#@ ##############################################################################
+#@ #
+#@ 
+#@ proc _Variable_Groups_Get_Groups { } {
+#@    global _Variable_Groups
+#@ 
+#@    set groups  [array names _Variable_Groups]
+#@    append groups " all"
+#@    return $groups
+#@ }
+#@ define_proc_attributes _Variable_Groups_Get_Groups -hidden
+#@ 
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #
+#@ #  PROCEDURE:   _Variable_Groups_Get_Variables_Of_Group
+#@ #
+#@ #  ABSTRACT:    Return a list of all variables of a variable group.
+#@ #               It also works for pseudo group all.
+#@ #
+#@ #   RETURNS:    Tcl list of all variables of a variable group including
+#@ #               pseudo group all
+#@ #
+#@ #  SYNTAX:      _Variable_Groups_Get_Groups
+#@ ##############################################################################
+#@ #
+#@ 
+#@ proc _Variable_Groups_Get_Variables_Of_Group { group } {
+#@   global _Variable_Groups
+#@ 
+#@   if { [string compare $group "all"] == 0 } {
+#@     set itr [array startsearch _Variable_Groups]
+#@     for {  } { [array anymore _Variable_Groups $itr]} { } {
+#@       set index [array nextelement _Variable_Groups $itr]
+#@       append vars $_Variable_Groups($index)
+#@     }
+#@     array donesearch _Variable_Groups $itr
+#@     return $vars
+#@   }
+#@ 
+#@   if { ![info exists _Variable_Groups($group)] } {
+#@     return -code error "Variable group '$group' does not exist."
+#@   }
+#@ 
+#@   # Test if all variables in the list of variables are still defined.
+#@   # Remove not existing variables.
+#@   foreach var [lsort $_Variable_Groups($group)] {
+#@     set cmd "uplevel #0 \{info exists $var\}"
+#@     if { ![eval $cmd] } {
+#@       # Remove it
+#@       set n [lsearch $_Variable_Groups($group) $var]
+#@       set $_Variable_Groups($group) [lreplace $_Variable_Groups($group) $n $n]
+#@     }
+#@   }
+#@   return $_Variable_Groups($group)
+#@ }
+#@ define_proc_attributes _Variable_Groups_Get_Variables_Of_Group -hidden
+#@ 
+#@ # -- End source /apps/synopsys/SYNTH/auxx/syn/.dc_common_procs.tcl
+
+#@ # -- Starting source /apps/synopsys/SYNTH/auxx/syn/.dc_procs.tcl
+
+#@ ##############################################################################
+#@ #
+#@ #
+#@ # FILE:         auxx/syn/.dc_procs.tcl
+#@ #
+#@ # ABSTRACT:     These procedures are part of the Design Compiler Tcl 
+#@ #               user interface.
+#@ #               They are loaded by .synopsys_dc.setup.
+#@ #
+#@ ##############################################################################
+#@ #
+#@ #
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #
+#@ #  PROCEDURE:  read_verilog
+#@ #
+#@ #  ABSTRACT:   Emulate PT's read_verilog command in DC:
+#@ #
+#@ #  Usage:      read_verilog         #  Read one or more verilog files 
+#@ #                *[-hdl_compiler]       (Use HDL Compiler (ignored))
+#@ #                file_names             (Files to read)
+#@ #
+#@ #  Modified: Bharat 11/17/99. Use uplevel to ensure that the command
+#@ #            sees user/hidden variables from the top level. Star 92970.
+#@ #
+#@ #  Modified: Evan Rosser, 12/5/01. Support -netlist and -rtl flags.
+#@ #
+#@ ##############################################################################
+#@ #
+#@ 
+#@ if { $synopsys_program_name != "icc_shell" } {
+#@ proc read_verilog { args } {
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd [format {read_file -format verilog %s %s [list %s]}                      [array names ra -rtl]                      [array names ra -netlist]                      $ra(file_names)]
+#@   return [uplevel #0 $cmd]
+#@ }
+#@ 
+#@ define_proc_attributes read_verilog     -info " Read one or more verilog files"     -permanent     -define_args {
+#@       {file_names "Files to read" file_names list required}
+#@    {-netlist "Use structural Verilog netlist reader" "" boolean optional}
+#@    {-rtl "Use RTL Verilog compiler (Presto or HDLC)" "" boolean optional}
+#@    {-hdl_compiler "Use HDL Compiler (ignored)" "" boolean {hidden optional}}
+#@ }
+#@ }
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #
+#@ #  PROCEDURE:  read_sverilog
+#@ #
+#@ #  ABSTRACT:   Emulate PT's read_sverilog command in DC:
+#@ #
+#@ #  Usage:      read_sverilog         #  Read one or more systemverilog files 
+#@ #                *[-hdl_compiler]       (Use HDL Compiler (ignored))
+#@ #                file_names             (Files to read)
+#@ #
+#@ #  Modified: Yong Xiao, 01/31/2003: Copied from read_verilog to support 
+#@ #            systemverilog input. 
+#@ #
+#@ ##############################################################################
+#@ #
+#@ 
+#@ proc read_sverilog { args } {
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd [format {read_file -format sverilog %s %s [list %s]}                      [array names ra -rtl]                      [array names ra -netlist]                      $ra(file_names)]
+#@   return [uplevel #0 $cmd]
+#@ }
+#@ 
+#@ define_proc_attributes read_sverilog     -info " Read one or more systemverilog files"     -permanent     -define_args {
+#@       {file_names "Files to read" file_names list required}
+#@    {-netlist "Use structural Verilog netlist reader" "" boolean optional}
+#@    {-rtl "Use RTL Systemverilog compiler (Presto or HDLC)" "" boolean optional}
+#@    {-hdl_compiler "Use HDL Compiler (ignored)" "" boolean {hidden optional}}
+#@ }
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #
+#@ #  PROCEDURE: read_vhdl
+#@ #
+#@ #  ABSTRACT:  Emulate PT's read_vhdl command in DC:
+#@ #
+#@ #  Usage:     read_vhdl            #  Read one or more vhdl files
+#@ #               file_names             (Files to read)
+#@ #
+#@ #
+#@ ##############################################################################
+#@ #
+#@ 
+#@ proc read_vhdl { args } {
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd [format {read_file -format vhdl %s [list %s]} 	       [array names ra -netlist] 	       $ra(file_names)]
+#@   return [uplevel #0 $cmd]
+#@ }
+#@ 
+#@ define_proc_attributes read_vhdl     -info " Read one or more vhdl files"     -permanent     -define_args {
+#@ 	{file_names "Files to read" file_names list required}
+#@ 	{-netlist "Use structural VHDL netlist reader" "" boolean optional}
+#@ }
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #
+#@ #  PROCEDURE:   read_db
+#@ #
+#@ #  ABSTRACT:    Emulate PT's read_db command in DC:
+#@ #
+#@ #  Usage: 
+#@ #     read_db              #  Read one or more db files
+#@ #       *[-netlist_only]       (Do not read any attributes from db (ignored))
+#@ #       *[-library]            (File is a library DB (ignored))
+#@ #      file_names             (Files to read)
+#@ #
+#@ #
+#@ ##############################################################################
+#@ #
+#@ 
+#@ proc read_db { args } {
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd [format {read_file -format db  [list %s]} $ra(file_names)]
+#@   return [uplevel #0 $cmd]
+#@ }
+#@ 
+#@ define_proc_attributes read_db     -info " Read one or more db files"     -permanent    -define_args {
+#@       {file_names "Files to read" file_names list required}
+#@       {-netlist_only "Do not read any attributes from db (ignored)" "" boolean {hidden optional}}
+#@       {-library "File is a library DB (ignored)" "" boolean {hidden optional}}
+#@      }
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #
+#@ #  PROCEDURE:   read_edif
+#@ #
+#@ #  ABSTRACT:    Emulate PT's read_edif command in DC: 
+#@ #
+#@ #  Usage:     
+#@ #      read_edif            #  Read one or more edif files
+#@ #        *[-complete_language]  (Use ptxr to read the file (ignored))
+#@ #        file_names             (Files to read)
+#@ #
+#@ #
+#@ ##############################################################################
+#@ #
+#@ proc read_edif { args } {
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd [format {read_file -format edif  [list %s]} $ra(file_names)]
+#@   return [uplevel #0 $cmd]
+#@ }
+#@ 
+#@ define_proc_attributes read_edif     -info " Read one or more edif files"     -permanent     -define_args {
+#@       {file_names "Files to read" file_names list required}
+#@       {-complete_language "Use ptxr to read the file (ignored)" "" boolean {hidden optional}}
+#@ }
+#@ 
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #
+#@ #  PROCEDURE:   read_ddc
+#@ #
+#@ #  ABSTRACT:    Shorthand for "read_file -format ddc":
+#@ #
+#@ #  Usage: 
+#@ #     read_ddc             #  Read one or more ddc files
+#@ #      *[-scenarios]		only read constraints for specified scenarios
+#@ #      *[-active_scenarios]     only activate the specified scenarios
+#@ #      file_names             (Files to read)
+#@ #
+#@ #
+#@ ##############################################################################
+#@ #
+#@ 
+#@ proc read_ddc { args } {
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd "read_file -format ddc"
+#@   if { [ info exists ra(-scenarios) ] } {
+#@     set cmd "$cmd -scenarios { $ra(-scenarios) }"
+#@   }
+#@   if { [ info exists ra(-active_scenarios) ] } {
+#@     set cmd "$cmd -active_scenarios { $ra(-active_scenarios) }"
+#@   }
+#@   set cmd "$cmd { $ra(file_names) }"
+#@   return [uplevel \#0 $cmd]
+#@ }
+#@ 
+#@ define_proc_attributes read_ddc     -info "Read one or more ddc files"     -permanent     -define_args {
+#@       {file_names "Files to read" file_names list required}
+#@       {-scenarios "list of scenarios to be read from ddc file"
+#@ 	  scenario_list list optional}
+#@       {-active_scenarios "list of scenarios to be made active"
+#@ 	  active_scenario_list list optional}}
+#@ 
+#@ 
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #  PROCEDURE:   source_tcl_file
+#@ #
+#@ #  ABSTRACT:    generic procedure to source another tcl file
+#@ #
+#@ #  Arguments:
+#@ #               filename    tcl filename
+#@ #               dir         directory to check for file
+#@ #               msg         verbose message
+#@ #               verbose     verbose mode
+#@ #
+#@ #  Usage:     
+#@ #
+#@ ##############################################################################
+#@ #
+#@ proc source_tcl_file { filename dir msg {verbose 1} } {
+#@     set __qual_pref_file [file join $dir $filename]
+#@     if {[file exists  $__qual_pref_file]} {
+#@       if { $verbose } {
+#@         echo $msg $__qual_pref_file
+#@       }
+#@       # use catch to recover from errors in the pref file
+#@       echo_trace "Sourcing " $__qual_pref_file
+#@       # to speed up sourcing use read and eval
+#@       set f [open $__qual_pref_file]
+#@       if {[catch {namespace eval :: [read -nonewline $f]} __msg]} {
+#@           echo Error: Error during sourcing of $__qual_pref_file
+#@           if {$__msg != ""}  { echo $__msg }
+#@           # actually, it looks like $__msg is always null after
+#@           # source fails
+#@       }
+#@       close $f
+#@     } else {
+#@       echo_trace "Info: File '" $__qual_pref_file "' does not exist!"
+#@     }
+#@ }
+#@ define_proc_attributes source_tcl_file -hidden
+#@ 
+#@ 
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #  PROCEDURE:   echo_trace
+#@ #
+#@ #  ABSTRACT:    echo only in trace modus
+#@ #
+#@ ##############################################################################
+#@ #
+#@ proc echo_trace { args } {
+#@   if { [info exists ::env(TCL_TRACE)] } {
+#@     echo  TRACE\> [join $args "" ]
+#@   }
+#@ }
+#@ define_proc_attributes echo_trace -hidden
+#@ 
+#@ #############################################################################
+#@ #
+#@ # Following procedures added for PC write_script
+#@ #
+#@ #
+#@ #
+#@ ############################################################################
+#@ 
+#@ proc set_cell_restriction { args } {
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@     set cmd [format {set_attribute %s -type integer restrictions %s }     	$ra(cell)     	$ra(value)]
+#@     return [uplevel #0 $cmd]
+#@ 
+#@ }
+#@ define_proc_attributes set_cell_restriction -hidden   -define_args {            {cell "cell_name" cell string required} 	   {value   "value" value string required}    }
+#@ 
+#@ 
+#@ proc set_cell_soft_keepout {args} {
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@     set cmd [format {set_keepout_margin -type soft -outer {%d %d %d %d} [list %s] }         $ra(llx)         $ra(lly)         $ra(urx)         $ra(ury)     	$ra(objects)]
+#@     return [uplevel #0 $cmd]
+#@ 
+#@ 
+#@ }
+#@ 
+#@ define_proc_attributes set_cell_soft_keepout -hidden  -define_args {          {llx "llx" llx float required}          {lly "lly" lly float required}          {urx "urx" urx float required}          {ury "ury" ury float required}          {objects "objects" objects list  required}  }
+#@ 
+#@ proc set_cell_hard_keepout {args} {
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@     set cmd [format {set_keepout_margin -type soft -outer {%d %d %d %d} [list %s] }         $ra(llx)         $ra(lly)         $ra(urx)         $ra(ury)     	$ra(objects)]
+#@     return [uplevel #0 $cmd]
+#@ 
+#@ 
+#@ }
+#@ 
+#@ define_proc_attributes set_cell_hard_keepout -hidden  -define_args {          {llx "llx" llx float required}          {lly "lly" lly float required}          {urx "urx" urx float required}          {ury "ury" ury float required}          {objects "objects" objects list  required}  }
+#@ 
+#@ set mw_use_pdb_lib_format false
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #  PROCEDURE:   write_milkyway
+#@ #
+#@ #  ABSTRACT:    wrapper around save_mw_cel to support original write_milkyway
+#@ #               interface
+#@ # if { [info commands open_mw_cel] == "open_mw_cel" } {}
+#@ #
+#@ ##############################################################################
+#@ 
+#@ if { [string match -nocase {*icc_shell*} $synopsys_program_name] } {
+#@ 
+#@ proc write_milkyway args {
+#@ 
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd [format {save_mw_cel -as %s %s %s %s %s}                      $ra(-output)                     [array names ra -overwrite]                      [array names ra -create]                      [array names ra -all]                      [array names ra -dps]]
+#@   return [uplevel #0 $cmd]
+#@ }
+#@ 
+#@ define_proc_attributes write_milkyway -hidden     -info " Saves the design as milkyway CEL"     -define_args       {{-output fileName "Name" string {optional}}       {-overwrite "Overwrite the current version" "" boolean {optional}}       {-create "Create from scratch" "" boolean {hidden optional}}       {-all "Save all modified cells" "" boolean {hidden optional}}       {-dps "Save internal DPS design" "" boolean {hidden optional}}}
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #  PROCEDURE:   read_milkyway
+#@ #
+#@ #  ABSTRACT:    wrapper around open_mw_cel to support original read_milkyway
+#@ #               interface
+#@ #  MODIFIED:    To support DPS in Galileo we need to pass the filtering
+#@ #               parameters to the DPS command. (Pankaj Goswami, Mar09 2005)
+#@ #
+#@ ##############################################################################
+#@ 
+#@ proc read_milkyway args {
+#@ 
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd [format {open_mw_cel %s}                      $ra() ]
+#@ 
+#@   if {[info exists ra(-library)]} {
+#@     set cmd [concat [concat $cmd " -library " ] " $ra(-library) "]
+#@   }
+#@ 
+#@   if {[info exists ra(-read_only)]} {
+#@     lappend cmd {-readonly}
+#@   }
+#@ 
+#@ # DPS specific stuff
+#@   set dps_cmd "vh_set_current_partition "
+#@   set read_mw_with_dps_filter false
+#@                                                                                                                                              
+#@   if {[info exists ra(-vh_module_only)]} {
+#@      append dps_cmd "-vh_module_only "
+#@      set read_mw_with_dps_filter true
+#@   }
+#@                                                                                                                                              
+#@   if {[info exists ra(-vh_include)]} {
+#@      append dps_cmd [concat " -vh_include " " \{ $ra(-vh_include) \}"]
+#@      append dps_cmd " "
+#@      set read_mw_with_dps_filter true
+#@   }
+#@ 
+#@   if {[info exists ra(-vh_exclude)]} {
+#@      append dps_cmd [concat " -vh_exclude" " \{ $ra(-vh_exclude) \}"]
+#@      set read_mw_with_dps_filter true
+#@   }
+#@                                                                                                                                              
+#@   if { $read_mw_with_dps_filter == true } {
+#@      # Call the DPS command to store the DPS filtering params.
+#@      uplevel #0 $dps_cmd
+#@   } else {
+#@      # If there is no DPS filtering params, then we need to reset the
+#@      # params which might have been stored from the provious command.
+#@      append dps_cmd " -vh_reset_partition"
+#@      uplevel #0 $dps_cmd
+#@   }
+#@ # End of DPS stuff
+#@ 
+#@   return [uplevel #0 $cmd]
+#@ }
+#@ 
+#@ define_proc_attributes read_milkyway -hidden     -info " Read milkyway CEL from disk"     -define_args       {{-library "library name" "lib_name" string {optional}}       {-read_only "open design in read only mode" "" boolean {optional}}       {-version "version number of the CEL" "number" string {optional}}       {-vh_module_only "open design for DPS module only partition" "" boolean {hidden optional}}       {-vh_include "list of designs to be included in the DPS partition" "include_designs" list {hidden optional}}       {-vh_exclude "list of designs to be excluded in the DPS partition" "exclude_designs" list {hidden optional}}       {"" fileName "CEL name" string {required}}}
+#@ 
+#@ }
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #  PROCEDURE:   set_mw_technology_file
+#@ #
+#@ #  ABSTRACT:    wrapper around update_mw_lib
+#@ #
+#@ #  HISTORY :    2009/6/21, yunz, support ALF reader in ICC
+#@ #
+#@ ##############################################################################
+#@ if { [string match -nocase {*icc_shell*} $synopsys_program_name] || 
+#@     ([string match -nocase {*d[ce]_shell*} $synopsys_program_name] && [shell_is_mwlib_enabled]) }  {
+#@ 
+#@ proc set_mw_technology_file args {
+#@ 
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd ""
+#@   set lib_name ""
+#@   set pdb_file "tech.pdb"
+#@   set log_file "log_file"
+#@   set alf_file ""
+#@ 
+#@   if {[info exists ra(-technology)] && [info exists ra(-plib)]} {
+#@       echo "Error: the $ra(-technology) and $ra(-plib) options are mutually exclusive."
+#@       return [uplevel #0 $cmd]
+#@   } elseif {[info exists ra(-technology)] && [info exists ra(-alf)]} {
+#@       echo "Error: the $ra(-technology) and $ra(-alf) options are mutually exclusive."
+#@       return [uplevel #0 $cmd]
+#@   } elseif {[info exists ra(-plib)] && [info exists ra(-alf)]} {
+#@       echo "Error: the $ra(-plib) and $ra(-alf) options are mutually exclusive."
+#@       return [uplevel #0 $cmd]
+#@   }
+#@ 
+#@   if {[info exists ra(-technology)]} {
+#@ 
+#@     set cmd [format {update_mw_lib -technology %s %s} 		     $ra(-technology) 		     $ra() ]
+#@   }
+#@ 
+#@   if {[info exists ra(-alf)]} {
+#@ 
+#@     set cmd [format {update_mw_lib %s} 		     $ra() ]
+#@ 
+#@     set cmd [concat [concat $cmd " -alf " ] " $ra(-alf) "]
+#@   }
+#@ 
+#@   return [uplevel #0 $cmd]
+#@ }
+#@ 
+#@ define_proc_attributes set_mw_technology_file -hide_body     -info " Set technology file for the library "     -define_args       {{-technology "Technology file name" "tech_file" string {optional}}       {-alf "alf file name" "file_name" string  {optional}}      {"" "Library name" "libName" string {required}}}
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #  PROCEDURE:   rebuild_mw_lib
+#@ #
+#@ #  ABSTRACT:    wrapper around update_mw_lib
+#@ #
+#@ ##############################################################################
+#@ 
+#@ proc rebuild_mw_lib args {
+#@ 
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd [format {update_mw_lib -rebuild %s}                         $ra() ]
+#@ 
+#@   return [uplevel #0 $cmd]
+#@ }
+#@ 
+#@ define_proc_attributes rebuild_mw_lib -hide_body     -info " Rebuild the library "     -define_args       {{"" "Library name" "libName" string {required}}}
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #  PROCEDURE:   set_mw_lib_reference
+#@ #
+#@ #  ABSTRACT:    Procedure to set ref lib list or ref ctrl file
+#@ #
+#@ ##############################################################################
+#@ 
+#@ proc set_mw_lib_reference args {
+#@ 
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd ""
+#@ 
+#@   if {[info exists ra(-mw_reference_library)]} {
+#@     set cmd [format {set_reference_control_file -reference_libraries {%s} %s}                         $ra(-mw_reference_library)                         $ra() ]
+#@   }
+#@ 
+#@   if {[info exists ra(-reference_control_file)]} {
+#@     set cmd [format {set_reference_control_file -file %s %s}                         $ra(-reference_control_file)                         $ra() ]
+#@   }
+#@   return [uplevel #0 $cmd]
+#@ }
+#@ 
+#@ define_proc_attributes set_mw_lib_reference -hide_body     -info " Set reference for the library "     -define_args       {{-mw_reference_library "List of reference libraries" "lib_list" list {optional}}       {-reference_control_file "Reference control file" "file_name" string {optional}}       {"" "Library name" "libName" string {required}}}
+#@ 
+#@ #
+#@ ##############################################################################
+#@ #
+#@ #  PROCEDURE:   create_mw_lib
+#@ #
+#@ #  ABSTRACT:    wrapper around MWUI create_mw_lib 
+#@ #
+#@ ##############################################################################
+#@ 
+#@ proc create_mw_lib args {
+#@ 
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd ""
+#@   set lib_name ""
+#@   set pdb_file "tech.pdb"
+#@   set log_file "log_file"
+#@  
+#@   if {[info exists ra(-ignore_case)]} {
+#@     set cmd [format {org_create_mw_lib %s}                         $ra() ]
+#@   } else {
+#@     set cmd [format {org_create_mw_lib -case_sensitive %s}                         $ra() ]
+#@   }
+#@ 
+#@   if {[info exists ra(-technology)]} {
+#@     set cmd [concat [concat $cmd " -technology " ] " $ra(-technology) "]
+#@   } 
+#@ 
+#@   if {[info exists ra(-ignore_tf_error)]} {
+#@     set cmd [concat $cmd " -ignore_tf_error " ]
+#@   }
+#@ 
+#@   if {[info exists ra(-hier_separator)]} {
+#@     set cmd [concat [concat $cmd " -hier_seperator " ] " $ra(-hier_separator) "]
+#@   }
+#@ 
+#@   if {[info exists ra(-bus_naming_style)]} {
+#@     set cmd [concat [concat $cmd " -bus_naming_style " ] " {$ra(-bus_naming_style)} "]
+#@   }
+#@ 
+#@   
+#@   if {[info exists ra(-reference_control_file)]} {
+#@     set cmd [concat [concat $cmd " -reference_control_file " ] " $ra(-reference_control_file) "]
+#@   }  
+#@ 
+#@   if {[info exists ra(-mw_reference_library)]} {
+#@     set cmd [concat [concat [concat $cmd " -mw_reference_library {" ] " $ra(-mw_reference_library) "] "}"]
+#@   }
+#@   
+#@   if { ![uplevel #0 $cmd] } {
+#@     return 0
+#@   }
+#@ 
+#@   set cmd ""
+#@ 
+#@   if {[info exists ra(-open)]} {
+#@     uplevel #0 $cmd
+#@     set cmd [format {open_mw_lib %s}                         $ra() ]
+#@   }
+#@ 
+#@   return [uplevel #0 $cmd]
+#@ }
+#@ 
+#@ define_proc_attributes create_mw_lib -hide_body     -info " Create a milkyway library "     -define_args       {{-technology "Technology file name" "file_name" string {optional}}           {-ignore_tf_error "Ignore the error in technology file" "" boolean {hidden optional}}       {-hier_separator "Hierarchical separator, default is backslash / " "separator" string {hidden optional}}       {-bus_naming_style "Bus naming style" "bus_naming_style" string {optional}}       {-ignore_case "Make case insensitive" "" boolean {hidden optional}}       {-case_sensitive "Make case sensitive" "" boolean {hidden optional}}       {-mw_reference_library "List of reference libraries" "lib_list" list {optional}}       {-reference_control_file "Reference control file" "file_name" string {optional}}       {-open "Open the library after creation" "" boolean {optional}}       {"" "Library name to create" "libName" string {required}}}
+#@ 
+#@ #
+#@ ##############################################################################
+#@ #
+#@ #  PROCEDURE:   report_mw_lib
+#@ #
+#@ #  ABSTRACT:    wrapper around MWUI report_mw_lib
+#@ #
+#@ ##############################################################################
+#@ 
+#@ proc report_mw_lib args {
+#@ 
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd ""
+#@ 
+#@   if {[info exists ra(-mw_reference_library)]} {
+#@     if {[info exists ra()]} {
+#@       set cmd [format {org_report_mw_lib -mw_reference_library %s} $ra() ]
+#@     } else {
+#@       set cmd [format {org_report_mw_lib -mw_reference_library} ]
+#@     }
+#@     return [uplevel #0 $cmd]
+#@   }
+#@ 
+#@   if {[info exists ra(-unit_range)]} {
+#@     if {[info exists ra()]} {
+#@       set cmd [format {org_report_mw_lib -unit_range %s}                         $ra() ]
+#@     } else {
+#@       echo "Error : Library name must be specified when using this option"
+#@       return 0;
+#@     }
+#@     return [uplevel #0 $cmd]
+#@   }
+#@ 
+#@ }
+#@ 
+#@ define_proc_attributes report_mw_lib -hide_body     -info " Report information about the library "     -define_args       {{-unit_range "Report unit range of library" "" boolean {optional}}       {-mw_reference_library "Report list of reference libraries" "" boolean {optional}}       {"" "Library to be reported" "libName" string {optional}}}
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #  PROCEDURE:   close_mw_lib
+#@ #
+#@ #  ABSTRACT:    Wrapper around close_mw_lib to handle -save option properly
+#@ #      - save_mw_cel to save current cel with dc_netlist
+#@ #      - close_mw_cel to close current cel
+#@ #      - save_open_cels to save other open cels before closing library
+#@ #
+#@ ##############################################################################
+#@ 
+#@ proc close_mw_lib args {
+#@ 
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   if {$args == ""} {
+#@     set cmd [format {icc_is_dc_up} ]
+#@     if {[uplevel #0 $cmd]} {
+#@       set cmd [format {remove_design -quiet -designs} ]
+#@     if {[uplevel #0 $cmd]} {
+#@     set cmd [format {org_close_mw_lib } ]
+#@     return [uplevel #0 $cmd]
+#@     } else {
+#@       return 0
+#@   }
+#@     } else {
+#@       set cmd [format {org_close_mw_lib } ]
+#@       return [uplevel #0 $cmd]
+#@   }
+#@   }
+#@ 
+#@   if {[info exists ra(-save)]} {
+#@ 
+#@     set cmd [format {save_mw_cel} ]
+#@     if {![uplevel #0 $cmd]} {
+#@       return
+#@     }
+#@ 
+#@     set cmd [format {close_mw_cel} ]
+#@     if {![uplevel #0 $cmd]} {
+#@       return
+#@     }
+#@ 
+#@     set cmd [format {save_open_cels} ]
+#@     if {![uplevel #0 $cmd]} {
+#@       return
+#@     }
+#@   }
+#@ 
+#@   set cmd [format {org_close_mw_lib} ]
+#@   return [uplevel #0 $cmd]
+#@ }
+#@ 
+#@ if { [string match -nocase {*icc_shell*} $synopsys_program_name] } {
+#@   define_proc_attributes close_mw_lib -hide_body       -info " Closes the milkyway library "       -define_args         {{-save "Save open cels" "" boolean {optional}}         {"" "libraries to be closed" "lib list" list {hidden optional}}}
+#@ } else {
+#@   define_proc_attributes close_mw_lib -hide_body       -info " Closes the milkyway library "       -define_args         {{-no_save "Don't save open cels" "" boolean {hidden optional}}         {"" "libraries to be closed" "lib list" list {hidden optional}}}
+#@ }
+#@ ##############################################################################
+#@ #
+#@ #  PROCEDURE:   write_mw_lib_files
+#@ #
+#@ #  ABSTRACT:    Write technology or reference control file
+#@ #  History: Yun Zhang 2012/12/11, public option -stream_layer_map_file
+#@ #  History: Yun Zhang 2012/9/5. support new hidden option -vt_cell_placement_properties
+#@ #  History: Yun Zhang 2011/12/5. add new hidden option -stream_layer_map_file
+#@ #
+#@ ##############################################################################
+#@ proc write_mw_lib_files args {
+#@ 
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd ""
+#@ 
+#@   if {[info exists ra(-reference_control_file)]} {
+#@    #Option -reference_contrl_file, -plib and -technology are exclusive.
+#@    # If both of them are set at the same time, error reported.
+#@    # 9000273455, by xqsun, 2009/2/4
+#@      if {[info exists ra(-technology)]} {
+#@        echo "Error: Cannot specify '-reference_control_file' with '-technology'.(CMD-001)"
+#@        return 0
+#@      } elseif {[info exists ra(-plib)]} {
+#@        echo "Error: Cannot specify '-reference_control_file' with '-plib'.(CMD-001)"
+#@        return 0
+#@      } elseif {[info exists ra(-vt_cell_placement_properties)]} {
+#@        echo "Error: Cannot specify '-reference_control_file' with '-vt_cell_placement_properties'.(CMD-001)"
+#@        return 0
+#@      } elseif {[info exists ra(-stream_layer_map_file)]} {
+#@        echo "Error: Cannot specify '-reference_control_file' with '-stream_layer_map_file'.(CMD-001)"
+#@        return 0
+#@      } else {
+#@        set cmd [format {report_mw_lib_ref_ctrl_file -output %s %s}                            $ra(-output)                            $ra() ]
+#@        return [uplevel #0 $cmd]
+#@      }
+#@   }
+#@ 
+#@   if {[info exists ra(-technology)]} {
+#@      if {[info exists ra(-plib)]} {
+#@        echo "Error: Cannot specify '-technology' with '-plib'.(CMD-001)"
+#@        return 0
+#@      } elseif {[info exists ra(-vt_cell_placement_properties)]} {
+#@        echo "Error: Cannot specify '-technology' with '-vt_cell_placement_properties'.(CMD-001)"
+#@        return 0
+#@      } elseif {[info exists ra(-stream_layer_map_file)]} {
+#@        echo "Error: Cannot specify '-technology' with '-stream_layer_map_file'.(CMD-001)"
+#@        return 0
+#@      } else {
+#@        set cmd [format {org_report_mw_lib -output %s %s}                            $ra(-output)                            $ra() ]
+#@        return [uplevel #0 $cmd]
+#@      }
+#@   }
+#@ 
+#@   if {[info exists ra(-vt_cell_placement_properties)]} {
+#@     if {[info exists ra(-stream_layer_map_file)]} {
+#@        echo "Error: Cannot specify '-vt_cell_placement_properties' with '-stream_layer_map_file'.(CMD-001)"
+#@        return 0
+#@      } else {
+#@        set cmd [format {org_report_mw_lib -vt_cell_placement_properties  -output %s %s}        $ra(-output)        $ra() ]
+#@        return [uplevel #0 $cmd]
+#@      }
+#@   }
+#@ 
+#@   if {[info exists ra(-stream_layer_map_file)]} {
+#@        set cmd [format {org_report_mw_lib -stream_layer_map_file %s -output %s %s} 			$ra(-stream_layer_map_file)                         $ra(-output)                         $ra() ]
+#@        return [uplevel #0 $cmd]
+#@   }
+#@   
+#@ }
+#@ 
+#@ define_proc_attributes write_mw_lib_files -hide_body     -info " Write technology or reference control file "     -define_args       {{-technology "Dump technology file" "" boolean {optional}}       {-vt_cell_placement_properties "Dump multi-VT cells' implant layer information of library" "" boolean {optional hidden}}       {-reference_control_file "Dump reference control file" "" boolean {optional}}       {-stream_layer_map_file "Dump layer map file during stream in/out" "" string {optional}}       {-output "Output file" "file_name" string {required}}       {"" "Library to be reported" "libName" string {required}}}
+#@ }
+#@ ##############################################################################
+#@ #
+#@ #  PROCEDURE:   close_mw_cel
+#@ #
+#@ #  ABSTRACT:    Wrapper around close_mw_cel to add -save option
+#@ #  remove_timing_design is the command to shutdown dc netlist
+#@ #
+#@ ##############################################################################
+#@ if { [string match -nocase {*icc_shell*} $synopsys_program_name] } {
+#@ 
+#@ proc close_mw_cel args {
+#@ 
+#@   parse_proc_arguments -args $args ra
+#@   
+#@   global mw_is_all_views     
+#@   set cmd [format {icc_is_dc_up} ]
+#@   set dc_is_up [uplevel #0 $cmd]
+#@    
+#@   set cmd_close [format {org_close_mw_cel} ]
+#@   
+#@   if {[info exists ra(-all_views)]} {
+#@       set cmd_close [format {%s -all_views} $cmd_close]
+#@       set mw_is_all_views 1    
+#@   }
+#@   if {[info exists ra(-all_versions)]} {
+#@       set cmd_close [format {%s -all_versions} $cmd_close]
+#@   }
+#@   if {[info exists ra(-save)]} {
+#@       set cmd_close [format {%s -save} $cmd_close]
+#@   } 
+#@   if {[info exists ra(-verbose)]} {
+#@       set cmd_close [format {%s -verbose} $cmd_close]
+#@   }
+#@   if {[info exists ra(-hierarchy)]} {
+#@       set cmd_close [format {%s -hierarchy} $cmd_close]
+#@   }
+#@ 
+#@   ui_util_clean_saved_lib_attr $args
+#@   
+#@   set cmd ""
+#@   set lcels ""
+#@   set is_current_closed 1
+#@ 
+#@   if {[info exists ra()]} {
+#@     set lcels $ra()
+#@   }
+#@   set len [string length $lcels]
+#@   if {$len > 0} {
+#@     set is_current_closed [is_current_mw_cel $lcels]
+#@     set cmd_close [format {%s {%s}} $cmd_close $lcels]
+#@   }
+#@   if {[uplevel #0 $cmd_close]} {
+#@       set mw_is_all_views 0 
+#@       if {$dc_is_up == 1} {
+#@       if {$is_current_closed == 1} {
+#@         set cmd [format {remove_design -quiet -designs} ]
+#@         return [uplevel #0 $cmd]
+#@       }
+#@       return 1
+#@     } else {
+#@       return 1
+#@     }
+#@   } else {
+#@       set mw_is_all_views 0
+#@       return 0
+#@   }
+#@ }
+#@ 
+#@ define_proc_attributes close_mw_cel -hide_body     -info " Closes the design "     -define_args       {{-save "Save the design" "" boolean {optional}}       {-discard "Discard any changes" "" boolean {optional hidden}}       {-verbose "Print out debugging messages" "" boolean {optional hidden}}       {-hierarchy "Close top design and its child designs" "" boolean {optional}}       {-all_views "Close all views of the design" "" boolean {optional}}       {-all_versions "Close all versions of the design" "" boolean {optional}}       {"" "designs to be closed" "design list" list {optional}}}
+#@ 
+#@ ##############################################################################
+#@ #
+#@ #  PROCEDURE:  save_all_mw_cel 
+#@ #
+#@ #  ABSTRACT:    Wrapper around save_mw_cel to save all the open cels. Needed for Black box flow.
+#@ #
+#@ ##############################################################################
+#@         
+#@ proc save_all_mw_cels { } {
+#@   set top_cel [get_attribute [current_mw_cel] name]
+#@ 
+#@   set cels [fp_get_open_cells]
+#@ 
+#@   foreach cel $cels {
+#@     if {$cel != $top_cel} {
+#@       current_mw_cel $cel
+#@ 
+#@       save_mw_cel
+#@     }
+#@   }
+#@ 
+#@   current_mw_cel $top_cel
+#@ 
+#@   save_mw_cel
+#@ }
+#@ 
+#@ icc_hide_cmd save_all_mw_cels
+#@ 
+#@ ##############################################################################
+#@ #  PROCEDURE:   execute_command_and_create_cel_from_scratch 
+#@ #  ABSTRACT:    This procedure executes the given command and creates the CEL
+#@ #               from scratch after executing this command.
+#@ ##############################################################################
+#@ proc execute_command_and_create_cel_from_scratch {org_cmd_name args} {
+#@   global mw_create_cel_force
+#@   global mw_enable_auto_cel
+#@   global mw_force_auto_cel
+#@ 
+#@   set lib [current_mw_lib]
+#@ 
+#@   # If no MW lib, design is not from MW. Execute the original command 
+#@   # and return.
+#@   if {$lib == ""} {
+#@     return [eval $org_cmd_name $args]
+#@   }
+#@ 
+#@   # Get values of few variables.
+#@   set incr_mode $mw_create_cel_force
+#@   set mw_create_cel_force TRUE
+#@ 
+#@   # Get auto cel mode, disable it temporarily if enabled.
+#@   set auto_cel_mode $mw_enable_auto_cel
+#@   set mw_enable_auto_cel FALSE
+#@ 
+#@   # Check if the already existing CEL is auto-CEL.
+#@   set auto_cel 0
+#@   if {[is_cel_auto_cel]} {
+#@       set auto_cel 1
+#@   } elseif {![get_top_cel_mwid]} {
+#@       set auto_cel 1
+#@   }
+#@ 
+#@ 
+#@   # Run the original command, if not successful restore the incr_mode 
+#@   # variable and return. No CEL is created.
+#@   if {![eval $org_cmd_name $args]} {
+#@     set mw_create_cel_force $incr_mode
+#@     set mw_enable_auto_cel $auto_cel_mode
+#@     return 0
+#@   }
+#@ 
+#@   # Restore auto_cel mode
+#@   set mw_enable_auto_cel $auto_cel_mode
+#@ 
+#@   # Now create auto or real CEL depending on what the original CEL was.
+#@   if {$auto_cel == "1"} {
+#@   # Force creation of auto-CEL, since commands other than read_def/pdef
+#@   # do not decouple CEL from DC.
+#@ 
+#@   set mw_force_auto_cel TRUE
+#@     set cmd [format {save_mw_cel -auto}] 
+#@   } else {
+#@       if [get_top_cel_mwid] {
+#@       set cmd [format {save_mw_cel -create}] 
+#@       echo "Information: Command not supported by incr. update or write-thru."
+#@       echo "             Creating new CEL from scratch, old CEL will be closed."
+#@     }
+#@   }
+#@ 
+#@   # Create the Auto CEL or normal CEL from scratch.
+#@   if {![uplevel #0 $cmd]} {
+#@     set mw_create_cel_force $incr_mode
+#@     set mw_force_auto_cel FALSE
+#@     return 0
+#@   }
+#@ 
+#@   set mw_create_cel_force $incr_mode
+#@   set mw_force_auto_cel FALSE
+#@   return 1
+#@ }
+#@ 
+#@ define_proc_attributes execute_command_and_create_cel_from_scratch -hidden     -hide_body
+#@ 
+#@ ##############################################################################
+#@ #  PROCEDURE:   read_def
+#@ #  ABSTRACT:    Wrapper around read_def to handle incremental update properly
+#@ #  if MW based read_def is used, bypass the wrapper
+#@ #  enable_milkyway_def_reader_writer must be TRUE and use_pdb_lib_format must
+#@ # be false for MW read_Def to be run, use wrapper if either condition fails
+#@ ##############################################################################
+#@ rename -force dc_read_def org_read_def
+#@ icc_hide_cmd org_read_def
+#@ proc dc_read_def args {
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   return [eval execute_command_and_create_cel_from_scratch "org_read_def" $args]
+#@ }
+#@ 
+#@ define_proc_attributes dc_read_def -hide_body     -info " Read a def file "     -define_args       {{-design "name of design for which clusters are to be read" "" string {optional}}        {-quiet "do not print out any warnings" "" boolean {optional}}        {-verbose "print out more warnings" "" boolean {optional}}        {-allow_physical_cells "allow physical cells" "" boolean {optional}}        {-allow_physical_ports "allow physical ports" "" boolean {optional}}        {-allow_physical_nets "allow physical nets" "" boolean {optional}}        {-skip_signal_nets "skip signal nets" "" boolean {optional}}        {-incremental "incremental" "" boolean {optional}}        {-enforce_scaling "enforce_scaling" "" boolean {optional}}        {-move_bounds "move bounds" "" boolean {optional}}        {"" "input def file names" "input_def_file_name" string {required}}}
+#@ 
+#@ 
+#@ ##############################################################################
+#@ #  PROCEDURE:   group
+#@ #  ABSTRACT:    Wrapper around group to handle incremental update properly
+#@ ##############################################################################
+#@ rename -force group org_group
+#@ icc_hide_cmd org_group
+#@ proc group args {
+#@   parse_proc_arguments -args $args ra
+#@   return [eval execute_command_and_create_cel_from_scratch "org_group" $args]
+#@ }
+#@ 
+#@ define_proc_attributes group -hide_body   -info " create new hierarchy"   -define_args    {{-except "cells not to be included in the group" "exclude_list" list {optional}}
+#@     {-design_name "name of design created for new hierarchy" "design_name" string {optional}}
+#@     {-cell_name "name of cell created for new hierarchy" "cell_name" string {optional}}
+#@     {-logic "group any combinational elements" "" boolean {optional}}
+#@     {-pla "group any PLA elements" "" boolean {optional}}
+#@     {-fsm "group all elements part of a finite state machine" "" boolean {optional}}
+#@     {-hdl_block "name of hdl_block to group" "" string {optional}}
+#@     {-hdl_bussed "group all bussed gates under this block" "" boolean {optional}}
+#@     {-hdl_all_blocks "group all hdl blocks under this block" "" boolean {optional}}
+#@     {-soft "set the group_name attribute" "" boolean {optional}}
+#@     {"" "cells to be included in the group" "cell_list" list {optional}}}
+#@ 
+#@ ##############################################################################
+#@ #  PROCEDURE:   copy_design
+#@ #  ABSTRACT:    Wrapper around copy_design to handle incremental update properly
+#@ ##############################################################################
+#@ rename -force copy_design org_copy_design
+#@ icc_hide_cmd org_copy_design
+#@ proc copy_design args {
+#@   parse_proc_arguments -args $args ra
+#@   return [eval execute_command_and_create_cel_from_scratch "org_copy_design" $args]
+#@ }
+#@ 
+#@ define_proc_attributes copy_design -hide_body   -info " copy_design"   -define_args    {{"" "List of designs to be copied" "design_list" list {required}}
+#@     {"" "Name of new design or target file" "target_name" string {required}}}
+#@ 
+#@ ##############################################################################
+#@ #  PROCEDURE:   create_design
+#@ #  ABSTRACT:    Wrapper around create_design to handle incremental update properly
+#@ ##############################################################################
+#@ rename -force create_design org_create_design
+#@ icc_hide_cmd org_create_design
+#@ proc create_design args {
+#@   parse_proc_arguments -args $args ra
+#@   return [eval execute_command_and_create_cel_from_scratch "org_create_design" $args]
+#@ }
+#@ 
+#@ define_proc_attributes create_design -hide_body   -info " Creates a design in dc_shell memory"   -define_args    {{"" "name of the design to create" "<design_name>" string {required}}
+#@     {"" "name of file for design; optional" "<file_name>" string {optional}}}
+#@ 
+#@ ##############################################################################
+#@ #  PROCEDURE:   reset_design
+#@ #  ABSTRACT:    Wrapper around reset_design to handle incremental update properly
+#@ ##############################################################################
+#@ #rename -force reset_design org_reset_design
+#@ #icc_hide_cmd org_reset_design
+#@ #proc reset_design args {
+#@ #  parse_proc_arguments -args $args ra
+#@ #  return [eval execute_command_and_create_cel_from_scratch "org_reset_design" $args]
+#@ #}
+#@ 
+#@ ##############################################################################
+#@ #  PROCEDURE:   rename_design
+#@ #  ABSTRACT:    Wrapper around rename_design to handle incremental update properly
+#@ ##############################################################################
+#@ rename -force rename_design org_rename_design
+#@ icc_hide_cmd org_rename_design
+#@ proc rename_design args {
+#@   parse_proc_arguments -args $args ra
+#@   return [eval execute_command_and_create_cel_from_scratch "org_rename_design" $args]
+#@ }
+#@ 
+#@ define_proc_attributes rename_design -hide_body   -info " rename_design"   -define_args    {{"" "List of designs to be renamed" "design_list" list {required}}
+#@     {"" "Name of new design or target file" "target_name" string {required}}}
+#@ 
+#@ }
+#@ 
+#@ ##############################################################################
+#@ # If we are in icc_shell (i.e. Galileo) then
+#@ # load the procedures to switch between DC and Milkyway collections.
+#@ # Set the default to MW collection unless otherwise specified.
+#@ ##############################################################################
+#@ if { [string match -nocase {*icc_shell*} $synopsys_program_name] } {
+#@     # load the procedures that switch between DC and MW collections
+#@     source $synopsys_root/auxx/syn/collection_procs.tcl
+#@ 
+#@     set CS mw 
+#@ 
+#@     # see if the user wants DC
+#@     if {! [catch {getenv USE_DC_COLLECTIONS_ONLY}] &&
+#@ 	  [getenv USE_DC_COLLECTIONS_ONLY] } {
+#@ 	set CS dc 
+#@     }  
+#@ 
+#@     # set the collection source now
+#@     redirect /dev/null {
+#@       if {[catch {set_collection_mode -handle $CS}]} {
+#@         catch {set_collection_option -handle $CS}
+#@       } 
+#@     } 
+#@     
+#@     unset CS
+#@ }
+#@ 
+#@ ##############################################################################
+#@ # procedure for route command 
+#@ # echo the command to a temp tcl file for seperate process to pick up
+#@ ##############################################################################
+#@ if { [string match -nocase {*icc_shell*} $synopsys_program_name] } {
+#@     rename -force route org_route
+#@     icc_hide_cmd org_route
+#@     proc route args {
+#@         set route_cmd_file_name ".route_cmd.tcl"
+#@         set route_cmd_temp_file_name ".route_cmd.tcl.temp"
+#@         set fp [open $route_cmd_file_name "w"]
+#@         set route_cmd [concat "sep_proc_route " $args " -child"]
+#@         puts $fp $route_cmd
+#@         close $fp
+#@         
+#@         uplevel #0 rename -force route route_temp_proc
+#@         uplevel #0 rename -force org_route route
+#@         set status  [ uplevel #0 route $args  ]
+#@         uplevel #0 rename -force route org_route
+#@         uplevel #0 rename -force route_temp_proc route
+#@         
+#@         if { [info exist status ] == 1 } {
+#@             return $status
+#@         }
+#@         return 
+#@     }
+#@ }
+#@ 
+#@ ##############################################################################
+#@ # Tcl Command: set_ignore_cell
+#@ # Description: Load the command only in IC Compiler (icc_shell)
+#@ ##############################################################################
+#@ if { [string match -nocase {*icc_shell*} $synopsys_program_name] } {
+#@     source $synopsys_root/auxx/syn/psyn/ideal_cell.tcl.e
+#@ }
+#@ 
+#@ ##############################################################################
+#@ # Tcl Command: check_physical_design
+#@ # Description: Load the command only in IC Compiler (icc_shell)
+#@ ##############################################################################
+#@ if { [string match -nocase {*icc_shell*} $synopsys_program_name] } {
+#@     # Load the compiled Tcl byte-code:
+#@     # 9000784997: Do not log to command.log when sourcing .tbc files
+#@     set prev_sh_source_logging [get_app_var sh_source_logging]
+#@     set_app_var sh_source_logging 0
+#@     source $synopsys_root/auxx/syn/psyn/check_physical_design_core.tbc
+#@     source $synopsys_root/auxx/syn/psyn/check_physical_design_utils.tbc
+#@     source $synopsys_root/auxx/syn/psyn/check_physical_design_flows.tbc
+#@     source $synopsys_root/auxx/syn/psyn/check_physical_design_reports.tbc
+#@     source $synopsys_root/auxx/syn/psyn/check_physical_design_ui.tbc
+#@     source $synopsys_root/auxx/syn/psyn/sanity_setup_opt.tbc
+#@     source $synopsys_root/auxx/syn/psyn/sanity_setup_cmd.tbc
+#@     source $synopsys_root/auxx/syn/psyn/sanity_setup_rpt.tbc
+#@     source $synopsys_root/auxx/syn/psyn/create_qor_snapshot.tbc
+#@     source $synopsys_root/auxx/syn/psyn/report_qor_snapshot.tbc
+#@     source $synopsys_root/auxx/syn/psyn/msgParser.tbc
+#@     source $synopsys_root/auxx/syn/psyn/displacement_gui.tbc
+#@     source $synopsys_root/auxx/syn/psyn/categorize_timing_gui.tbc
+#@     set_app_var sh_source_logging $prev_sh_source_logging
+#@ 
+#@     source $synopsys_root/auxx/syn/psyn/mcmm_utils.tcl.e
+#@     source $synopsys_root/auxx/syn/psyn/propagate_all_clocks.tcl.e
+#@ }
+#@ 
+#@ if { [string match -nocase {*dc_shell*} $synopsys_program_name] && [shell_is_in_topographical_mode] }  {
+#@    # 9000784997: Do not log to command.log when sourcing .tbc files
+#@    set prev_sh_source_logging [get_app_var sh_source_logging]
+#@    set_app_var sh_source_logging 0
+#@    source $synopsys_root/auxx/syn/psyn/create_qor_snapshot.tbc
+#@    source $synopsys_root/auxx/syn/psyn/report_qor_snapshot.tbc
+#@    set_app_var sh_source_logging $prev_sh_source_logging
+#@ 
+#@    source $synopsys_root/auxx/syn/psyn/mcmm_utils.tcl.e
+#@ }
+#@ 
+#@ if { [string match -nocase {*icc_shell*} $synopsys_program_name] || [string match -nocase {*dc_shell*} $synopsys_program_name] || [string match -nocase {*de_shell*} $synopsys_program_name] } {
+#@    source $synopsys_root/auxx/syn/psyn/write_timing_context.tcl.e
+#@ }
+#@ 
+#@ if { $synopsys_program_name == "de_shell" }  {
+#@    # 9000784997: Do not log to command.log when sourcing .tbc files
+#@    set prev_sh_source_logging [get_app_var sh_source_logging]
+#@    set_app_var sh_source_logging 0
+#@    source $synopsys_root/auxx/syn/psyn/create_qor_snapshot.tbc
+#@    source $synopsys_root/auxx/syn/psyn/report_qor_snapshot.tbc
+#@    set_app_var sh_source_logging $prev_sh_source_logging
+#@ 
+#@    source $synopsys_root/auxx/syn/psyn/mcmm_utils.tcl.e
+#@ }
+#@ 
+#@ ##############################################################################
+#@ # ICC setup and hiding commands/procs etc
+#@ ##############################################################################
+#@ 
+#@ if { [string match -nocase {*icc_shell*} $synopsys_program_name] } {
+#@ #set  save_mw_cel_lib_setup  TRUE
+#@ #set  auto_restore_mw_cel_lib_setup FALSE
+#@ 
+#@ alias create_wiring_keepout create_wiring_keepouts
+#@ alias get_wiring_keepout get_wiring_keepouts
+#@ alias get_placement_keepout get_placement_keepouts
+#@ alias create_placement_keepout create_placement_keepouts
+#@ 
+#@ icc_hide_cmd execute_command_and_create_cel_from_scratch
+#@ icc_hide_cmd dc_read_def
+#@ icc_hide_cmd read_edif
+#@ icc_hide_cmd read_sverilog
+#@ icc_hide_cmd read_vhdl
+#@ icc_hide_cmd set_collection_mode
+#@ icc_hide_cmd return_dc_collection
+#@ icc_hide_cmd return_mw_collection
+#@ set mw_use_pdb_lib_format true
+#@ }
+#@ 
+#@ 
+#@ ##############################################################################
+#@ # Tcl Command: get_dont_touch_nets
+#@ # Description: wrapper of "get_nets -filter dont_touch_reason==mv"
+#@ ##############################################################################
+#@ if { [string match -nocase {*icc_shell*} $synopsys_program_name] } {
+#@ 
+#@ proc get_dont_touch_nets args {
+#@ 
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set cmd [format {get_nets}]
+#@ 
+#@   if {[info exists ra()]} {
+#@       set cmd [format {%s {%s}} $cmd $ra()]
+#@   }
+#@   if {[info exists ra(-type)]} {
+#@       set cmd [format {%s -filter dont_touch_reasons=~*%s*} $cmd $ra(-type)]
+#@   }
+#@   if {[info exists ra(-hierarchical)]} {
+#@       set cmd [format {%s -hierarchical} $cmd]
+#@   }
+#@   if {[info exists ra(-quiet)]} {
+#@       set cmd [format {%s -quiet} $cmd]
+#@   }
+#@   if {[info exists ra(-regexp)]} {
+#@       set cmd [format {%s -regexp} $cmd]
+#@   } 
+#@   if {[info exists ra(-nocase)]} {
+#@       set cmd [format {%s -nocase} $cmd]
+#@   }
+#@   if {[info exists ra(-exact)]} {
+#@       set cmd [format {%s -exact} $cmd]
+#@   }
+#@ 
+#@   return [uplevel #0 $cmd]
+#@ }
+#@ 
+#@ define_proc_attributes get_dont_touch_nets   -info " Get dont_touch nets "   -permanent   -define_args {     {"" "Match net names against patterns" "patterns" list {optional}}     {-type "Match net dont_touch reasons" "reasons" list {required}}     {-hierarchical "Search level-by-level in current instance" "" boolean {optional}}     {-quiet "Suppress all messages" "" boolean {optional hidden}}     {-regexp "Patterns are full regular expressions" "" boolean {optional hidden}}     {-nocase "With -regexp, matches are case-insensitive" "" boolean {optional hidden}}     {-exact "Wildcards are considered as plain characters" "" boolean {optional hidden}}   }
+#@ 
+#@ alias get_dont_touch_net get_dont_touch_nets
+#@ }
+#@ 
+#@ 
+#@ ##############################################################################
+#@ # return the first {index value} pair in Tcl array ary.
+#@ ##############################################################################
+#@ proc _snps_array_peek { level ary } {
+#@     upvar #$level $ary loc_ary
+#@     set ret [list]
+#@     set token [array startsearch loc_ary]
+#@     while {[array anymore loc_ary $token]} {
+#@         set k [array nextelement loc_ary $token]
+#@         set v $loc_ary($k)
+#@         set ret [list $k $v]
+#@             break
+#@         }
+#@     array donesearch loc_ary $token
+#@     return $ret;
+#@ }
+#@ define_proc_attributes _snps_array_peek -hidden
+#@ 
+#@ 
+#@ ##############################################################################
+#@ # Tcl Command: filter_collection
+#@ # Description: DC wrapper for filter_collection with fixes of direction filter
+#@ #
+#@ #              This is a fix for DC's filter using "direction" attribute. This
+#@ #              attribute is of integer type, but user wants a string format
+#@ ##############################################################################
+#@ if {[string match -nocase {*icc_shell*} $synopsys_program_name] == 0} {
+#@ rename -force -hidden filter_collection _real_filter_collection
+#@ proc filter_collection {args} {
+#@   parse_proc_arguments -args $args ra
+#@ 
+#@   set regexp ""
+#@   set nocase ""
+#@   if {[info exist ra(-regexp)]} {
+#@     set regexp "-regexp"
+#@   }
+#@   if {[info exist ra(-nocase)]} {
+#@     set nocase "-nocase"
+#@   }
+#@   set coll $ra(collection1)
+#@ 
+#@   # _real_filter_collection silently returns in this error condition
+#@   if {[catch {set coll_size [sizeof_collection $coll]}] || $coll_size <= 0} {
+#@     return [list]
+#@   }
+#@ 
+#@   if {$::sh_translate_direction_attribute == true} {
+#@     set filter_expr [replace_direction $coll $ra(expression)]
+#@   } else {
+#@     set filter_expr $ra(expression)
+#@   }
+#@ 
+#@   # if $ra(expression) is not empty but filter_expr is, collection is heterogrnous
+#@   # and expression has "direction" as substring.  We have to walk through all objects
+#@   if {[string length $filter_expr] == 0 && [string length $ra(expression)] != 0} {
+#@     set part1 [format {_real_filter_collection %s %s } $regexp $nocase]
+#@     set results ""
+#@     set subclxn ""
+#@     set subsize [expr [sizeof_collection $coll]/80 + 10]
+#@     set counter 0
+#@     foreach_in_collection obj $coll {
+#@       incr counter
+#@       set cmd [format {%s %s {%s}} $part1 $obj [replace_direction $obj $ra(expression)]]
+#@       append_to_collection subclxn [uplevel #0 $cmd]
+#@       if {[expr $counter % $subsize] == 0} {
+#@         append_to_collection results $subclxn
+#@         set subclxn ""
+#@       }
+#@     }
+#@     if {[sizeof_collection $subclxn] != 0} {
+#@       append_to_collection results $subclxn
+#@     }
+#@     return $results
+#@   } else {
+#@     set cmd [format {_real_filter_collection %s %s %s {%s}}                          $regexp $nocase $coll $filter_expr]
+#@     return [uplevel #0 $cmd]
+#@   }
+#@ }
+#@ define_proc_attributes filter_collection   -info " Filter a collection, resulting in new collection "   -permanent   -define_args {     {-regexp "Operators =~ and !~ use regular expressions" "" boolean {optional}}     {-nocase "Case insensitive string match" "" boolean {optional}}     {collection1 "Collection to filter" "collection1" string {required}}     {expression "Filter expression" "expression" string {required}}   }
+#@ 
+#@ }
+#@ 
+#@ # -- End source /apps/synopsys/SYNTH/auxx/syn/.dc_procs.tcl
+
+#@ 
+#@ # Temporary fix for the LMC_HOME variable- set it to an empty string 
+#@ 
+#@ if { [catch {getenv LMC_HOME } __err ] != 0 } {
+#@   setenv LMC_HOME ""
+#@ }
+#@ 
+#@ 
+#@ #
+#@ #
+#@ #       Site-Specific Variables
+#@ #
+#@ #       These are the variables that are most commonly changed at a
+#@ #       specific site, either upon installation of the Synopsys software,
+#@ #       or by specific engineers in their local .synopsys files.
+#@ #
+#@ #
+#@ 
+#@ # from the System Variable Group 
+#@ set link_library  { * your_library.db }
+#@ 
+#@ set search_path [list . ${synopsys_root}/libraries/syn ${synopsys_root}/minpower/syn ${synopsys_root}/dw/syn_ver ${synopsys_root}/dw/sim_ver]
+#@ set target_library  your_library.db
+#@ set synthetic_library  ""
+#@ set command_log_file  "./command.log"
+#@ set designer  ""
+#@ set company  ""
+#@ set find_converts_name_lists  "false"
+#@ 
+#@ set symbol_library  your_library.sdb 
+#@ 
+#@ # Turn on Formality SVF recording
+#@ if { $synopsys_program_name == "dc_shell"      ||      $synopsys_program_name == "de_shell"      ||      $synopsys_program_name == "design_vision" } { 
+#@   set_svf -default default.svf
+#@ }
+#@ 
+#@ # from the Schematic Variable Group 
+#@ 
+#@ # from the Plot Variable Group 
+#@ # [froi] 07/06/2012: Remove old Design Analyzer plot_command variable
+#@ #if { $sh_arch == "hp700" } {
+#@ #  set plot_command "lp -d" 
+#@ #} else {
+#@ #  set plot_command "lpr -Plw" 
+#@ #}
+#@ 
+#@ set view_command_log_file  "./view_command.log"
+#@ 
+#@ # from the View Variable group
+#@ if { $sh_arch == "hp700" } {
+#@    set text_print_command  "lp -d" 
+#@ } else {
+#@    set text_print_command  "lpr -Plw" 
+#@ }
+#@ #
+#@ #       System Variable Group:
+#@ #
+#@ #       These variables are system-wide variables.
+#@ #
+#@ set arch_init_path ${synopsys_root}/${sh_arch}/motif/syn/uid
+#@ set auto_link_disable  "false"
+#@ set auto_link_options  "-all"
+#@ set uniquify_naming_style  "%s_%d"
+#@ set verbose_messages  "true"
+#@ set echo_include_commands  "true"
+#@ set svf_file_records_change_names_changes "true"
+#@ set change_names_update_inst_tree   "true"
+#@ set change_names_dont_change_bus_members false
+#@ set default_name_rules ""
+#@ #set tdrc_enable_clock_table_creation   "true"
+#@ 
+#@ #
+#@ #       Compile Variable Group:
+#@ #
+#@ #       These variables affect the designs created by the COMPILE command.
+#@ #
+#@ set compile_assume_fully_decoded_three_state_busses   "false"
+#@ set compile_no_new_cells_at_top_level   "false"
+#@ set compile_dont_touch_annotated_cell_during_inplace_opt   "false"
+#@ set compile_update_annotated_delays_during_inplace_opt  "true"
+#@ set compile_instance_name_prefix   "U"
+#@ set compile_instance_name_suffix   ""
+#@ set compile_negative_logic_methodology   "false"
+#@ set compile_disable_hierarchical_inverter_opt   "false"
+#@ set compile_use_low_timing_effort   "false"
+#@ set compile_fix_cell_degradation   "false"
+#@ set compile_preserve_subdesign_interfaces   "false"
+#@ set compile_enable_constant_propagation_with_no_boundary_opt   "true"
+#@ set port_complement_naming_style   "%s_BAR"
+#@ set compile_implementation_selection   "true"
+#@ set compile_delete_unloaded_sequential_cells   "true"
+#@ set reoptimize_design_changed_list_file_name   ""
+#@ set compile_checkpoint_phases "false"
+#@ set compile_cpu_limit 0.0
+#@ set compile_log_format "  %elap_time %area %wns %tns %drc %endpoint";
+#@ set compile_top_all_paths   "false"
+#@ set compile_top_acs_partition "false"
+#@ set default_port_connection_class "universal"
+#@ set compile_hold_reduce_cell_count "false"
+#@ set compile_retime_license_behavior "wait"
+#@ set dont_touch_nets_with_size_only_cells "false"
+#@ if { $synopsys_program_name == "dc_shell" && [shell_is_in_topographical_mode] } {
+#@    set dct_prioritize_area_correlation "false"
+#@    set compile_error_on_missing_physical_cells "false"
+#@ }
+#@ 
+#@ set ldd_return_val 0
+#@ if { [string compare $dc_shell_mode "default"] == 0 } {
+#@   set ldd_script ${synopsys_root}/auxx/syn/scripts/list_duplicate_designs.dcsh
+#@   alias list_duplicate_designs "include -quiet ldd_script; dc_shell_status = ldd_return_val "
+#@ 
+#@ }
+#@ if { [string compare $dc_shell_mode "tcl"] == 0 } {
+#@   if {$synopsys_program_name != "dc_sms_shell"} {
+#@     source ${synopsys_root}/auxx/syn/scripts/list_duplicate_designs.tcl
+#@     # 9000784997: Do not log to command.log when sourcing .tbc files
+#@     set prev_sh_source_logging [get_app_var sh_source_logging]
+#@     set_app_var sh_source_logging 0
+#@     source ${synopsys_root}/auxx/syn/scripts/analyze_datapath.tbc
+#@     set_app_var sh_source_logging $prev_sh_source_logging
+#@   }
+#@ }
